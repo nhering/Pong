@@ -25,6 +25,7 @@ public class Pong extends JPanel{
 
     Ball ball = new Ball(20,580,380,2.5f,2.5f);
     Paddle leftPlayer = new Paddle(40,400,30,90);
+    Paddle rightPlayer = new Paddle(1130,400,30,90);
      
     public void movePadle(){
         
@@ -37,6 +38,7 @@ public class Pong extends JPanel{
         g.setColor(Color.white);
         g.fillOval((int) ball.xPos, (int) ball.yPos, (int)ball.diameter, (int)ball.diameter);
         g.fillRect(leftPlayer.xPos, leftPlayer.yPos, leftPlayer.width, leftPlayer.height);
+        g.fillRect(rightPlayer.xPos, rightPlayer.yPos, rightPlayer.width, rightPlayer.height);
     }
     /**
      * @param args the command line arguments
@@ -63,6 +65,7 @@ public class Pong extends JPanel{
         while (true){
             pong.ball.Move(sceneWidth,sceneHeight);
             pong.leftPlayer.Move(gameFrame,sceneHeight);
+            pong.rightPlayer.Move(gameFrame, sceneHeight);
             pong.repaint();
             Thread.sleep(10);
         }

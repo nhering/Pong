@@ -6,7 +6,11 @@
 package pong;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +43,9 @@ public class Pong extends JPanel{
      */
     public static void main(String[] args) throws InterruptedException {
         
+        BufferedImage cursorImage =  new BufferedImage(16,16,BufferedImage.TYPE_INT_ARGB);
+        Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImage, new Point(0,0), "blank cursor");
+        
         // Make a window for the game
         int sceneWidth = 1200;
         int sceneHeight = 800;
@@ -46,6 +53,7 @@ public class Pong extends JPanel{
         gameFrame.setSize(sceneWidth, sceneHeight);
         gameFrame.setVisible(true);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.getContentPane().setCursor(blankCursor);
         
         // Logic for the game
         Pong pong = new Pong();
@@ -54,7 +62,7 @@ public class Pong extends JPanel{
         
         while (true){
             pong.ball.Move(sceneWidth,sceneHeight);
-            pong.leftPlayer.Move(sceneHeight);
+            pong.leftPlayer.Move(gameFrame,sceneHeight);
             pong.repaint();
             Thread.sleep(10);
         }

@@ -6,6 +6,7 @@
 package pong;
 
 import java.awt.MouseInfo;
+import javax.swing.JFrame;
 
 /**
  *
@@ -24,12 +25,13 @@ public class Paddle {
         height = h;
     }
     
-    public void Move(int screenHeight){
-        int y = MouseInfo.getPointerInfo().getLocation().y;
+    public void Move(JFrame gameFrame, int screenHeight){
+        int y = MouseInfo.getPointerInfo().getLocation().y - gameFrame.getLocationOnScreen().y - 35;
+        //int y = MouseInfo.getPointerInfo().getLocation().y;
         if(y<=0)
             yPos=0;
-        else if(y>=(screenHeight))
-            yPos = screenHeight;
+        else if(y>=(screenHeight - height - 35))
+            yPos = screenHeight - height - 35;
         else
             yPos = y;
         //yPos = ((y <= 0) ?0:y);

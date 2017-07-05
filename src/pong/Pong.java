@@ -19,23 +19,7 @@ import javax.swing.JPanel;
  */
 public class Pong extends JPanel{
 
-    float x = 580f;
-    float y = 380f;
-    float border = 20f;
-    float xSpeed = 2.5f;
-    float ySpeed = 2.5f;
-    
-    public void moveBall(){
-        if(x>=getWidth()-border || x<=0){
-            xSpeed = xSpeed * -1;
-        }
-        x = x + xSpeed;
-        
-        if(y>=getHeight()-border || y<=0){
-            ySpeed = ySpeed * -1;
-        }
-        y = y + ySpeed;
-    }
+    Ball ball = new Ball(20,580,380,2.5f,2.5f);
     
     public void movePadle(){
         
@@ -46,7 +30,7 @@ public class Pong extends JPanel{
         super.paint(g);
         
         g.setColor(Color.white);
-        g.fillOval((int) x, (int) y, 20, 20);
+        g.fillOval((int) ball.xPos, (int) ball.yPos, (int)ball.diameter, (int)ball.diameter);
     }
     /**
      * @param args the command line arguments
@@ -54,8 +38,10 @@ public class Pong extends JPanel{
     public static void main(String[] args) throws InterruptedException {
         
         // Make a window for the game
+        int sceneWidth = 1200;
+        int sceneHeight = 800;
         JFrame gameFrame = new JFrame("Pong");
-        gameFrame.setSize(1200, 800);
+        gameFrame.setSize(sceneWidth, sceneHeight);
         gameFrame.setVisible(true);
         gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -65,7 +51,7 @@ public class Pong extends JPanel{
         pong.setBackground(Color.black);
         
         while (true){
-            pong.moveBall();
+            pong.ball.Move(sceneWidth,sceneHeight);
             pong.repaint();
             Thread.sleep(10);
         }

@@ -25,12 +25,12 @@ public class Ball {
     }
     
     public void Move(int width, int height){
-        if(xPos>=(width-diameter) || xPos<=0){
+        if(xPos>=(width-diameter*2) || xPos<=0){
             xSpeed = xSpeed * -1;
         }
         xPos = xPos + xSpeed;
         
-        if(yPos>=(height-diameter) || yPos<=0){
+        if(yPos>=(height-(diameter*3)) || yPos<=0){
             ySpeed = ySpeed * -1;
         }
         yPos = yPos + ySpeed;

@@ -20,7 +20,8 @@ import javax.swing.JPanel;
 public class Pong extends JPanel{
 
     Ball ball = new Ball(20,580,380,2.5f,2.5f);
-    
+    Paddle leftPlayer = new Paddle(40,400,30,90);
+     
     public void movePadle(){
         
     }
@@ -31,6 +32,7 @@ public class Pong extends JPanel{
         
         g.setColor(Color.white);
         g.fillOval((int) ball.xPos, (int) ball.yPos, (int)ball.diameter, (int)ball.diameter);
+        g.fillRect(leftPlayer.xPos, leftPlayer.yPos, leftPlayer.width, leftPlayer.height);
     }
     /**
      * @param args the command line arguments
@@ -52,6 +54,7 @@ public class Pong extends JPanel{
         
         while (true){
             pong.ball.Move(sceneWidth,sceneHeight);
+            pong.leftPlayer.Move(sceneHeight);
             pong.repaint();
             Thread.sleep(10);
         }

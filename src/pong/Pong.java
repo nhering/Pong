@@ -6,14 +6,12 @@
 package pong;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Cursor;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -25,16 +23,18 @@ public class Pong extends JPanel{
 
     Ball ball = new Ball(20,580,380,2.5f,2.5f);
     Paddle leftPlayer = new Paddle(40,400,30,90);
-    Paddle rightPlayer = new Paddle(1130,400,30,90);
-     
-    public void movePadle(){
-        
-    }
-    
+    Paddle rightPlayer = new Paddle(1120,400,30,90);
+    Score score = new Score(0,0);
+            
     @Override
     public void paint(Graphics g){
         super.paint(g);
+        //paint the scores
+        scoreFont = new 
+        //g.setColor(Color.gray);
+        //g.setFont(Ariel);
         
+        //paint the ball and paddles
         g.setColor(Color.white);
         g.fillOval((int) ball.xPos, (int) ball.yPos, (int)ball.diameter, (int)ball.diameter);
         g.fillRect(leftPlayer.xPos, leftPlayer.yPos, leftPlayer.width, leftPlayer.height);
@@ -45,6 +45,7 @@ public class Pong extends JPanel{
      */
     public static void main(String[] args) throws InterruptedException {
         
+        //blank cursor to make mouse pointer 'invisible'
         BufferedImage cursorImage =  new BufferedImage(16,16,BufferedImage.TYPE_INT_ARGB);
         Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(cursorImage, new Point(0,0), "blank cursor");
         

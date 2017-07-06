@@ -31,7 +31,7 @@ public class Paddle {
         if(y<=0)
             yPos=0;
         else if(y>=(screenHeight - height - 35))
-            yPos = screenHeight - height - 35;
+            yPos = screenHeight - height - 32;
         else
             yPos = y;
         //yPos = ((y <= 0) ?0:y);
